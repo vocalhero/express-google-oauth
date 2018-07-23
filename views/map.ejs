@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+
+    <div id="map_canvas"></div>
+
+    <div id="mapdata"
+         data-points=<%= encodeURI(JSON.stringify(rows)) %>
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js' ></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=<%= google_maps_key %>' ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
+    <script src='/javascripts/main.js' ></script>
+
+  </body>
+</html>

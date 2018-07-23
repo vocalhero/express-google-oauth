@@ -5,7 +5,37 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
-</html>
+    <p>Select sheet details and click "Update" to compute the map link and display the map</p>
+
+        <form  id="frm1" action="myFunction" >
+            Sheet url:<br>
+            <input id="spreadsheetUrl" type="text" name="id" value=<%= spreadsheetUrl %>  size="100" ><br><br>
+            Range:<br>
+            <input id="range" type="text" name="range" value=<%= range %>   size="20" <br><br>
+        </form>
+    <br>
+    <button onclick="updateLink()">Update</button>
+    <br>
+        <p><a  id="mapUrl" href=<%= url %> >Map url</a></p>
+    <br>
+
+        <p>Map preview</p>
+        <iframe  id="mapIframe" src=<%= url %>  width="400" height="400">
+          <p>Your browser does not support iframes.</p>
+        </iframe>
+
+
+
+<script>
+function updateLink() {
+
+    var matches = /\/([\w-_]{15,})\/(.*?gid=(\d+))?/.exec(document.getElementById("spreadsheetUrl").value);
+    sid = matches[1];
+    console.log("Sid =" + sid);
+    var newLink = "/map?id=" + sid + "&range=" + encodeURI(document.getElementById("range").value)
+    console.log("Newlink =" + newLink);
+    document.getElementById("mapUrl").href = newLink;
+    document.getElementById("mapIframe").src = newLink;
+}
+</script>
