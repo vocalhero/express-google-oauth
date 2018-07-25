@@ -121,5 +121,5 @@ function populateMarkers(dataType) {
     // position the center of the map at the center of the dataset
     map.setCenter(bound.getCenter());
     map.fitBounds(bound);
-    markerCluster.setMaxZoom(map.getZoom() + 1);
+    markerCluster.setMaxZoom(map.getZoom());
 };
